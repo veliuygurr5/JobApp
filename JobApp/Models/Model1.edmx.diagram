@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ac86ebb613164918a4fef5639a354a95" Name="Diagram1">
+        <EntityTypeShape EntityType="JobsDBModel.Application" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobsDBModel.Company" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobsDBModel.CV" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobsDBModel.Posting" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobsDBModel.Profession" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobsDBModel.Skill" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobsDBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JobsDBModel.User" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="JobsDBModel.FK_Application_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="JobsDBModel.FK_Application_CV" ManuallyRouted="false" />
+        <AssociationConnector Association="JobsDBModel.FK_Application_Posting" ManuallyRouted="false" />
+        <AssociationConnector Association="JobsDBModel.FK_Application_User" ManuallyRouted="false" />
+        <AssociationConnector Association="JobsDBModel.FK_Posting_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="JobsDBModel.FK_CV_User" ManuallyRouted="false" />
+        <AssociationConnector Association="JobsDBModel.FK_Posting_Profession" ManuallyRouted="false" />
+        <AssociationConnector Association="JobsDBModel.FK_Skill_Profession" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

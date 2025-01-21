@@ -1,0 +1,38 @@
+﻿@using JobApp.Models
+@model User
+@{
+    Layout = null;
+}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/logreg.css" /> <!-- CSS dosyanızın yolu -->
+</head>
+
+<body style="justify-content:center;align-items:center;">
+
+
+    @using (Html.BeginForm("Login", "User", FormMethod.Post))
+    {
+        <h1>Giriş Yap</h1>
+
+        <span class="field-validation-error">@ViewBag.errmsg</span>
+
+        <!-- Kullanıcı Adı Girişi -->
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.Username, new { @class = "input-field", placeholder = "Kullanıcı adınızı girin" })
+        </div>
+
+        <!-- Şifre Girişi -->
+        <div class="form-group">
+            @Html.PasswordFor(m => m.Password, new { @class = "input-field", placeholder = "Şifrenizi girin" })
+        </div>
+
+        <!-- Giriş Yap Butonu -->
+        <div class="form-group">
+            <input type="submit" value="Giriş Yap" class="submit-btn" />
+        </div>
+
+        <a href="@Url.Action("Register","User")">Hesabınız yoksa kayıt olmak için tıklayın</a>
+    }
+</body>
+

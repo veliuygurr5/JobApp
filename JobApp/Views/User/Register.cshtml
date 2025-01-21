@@ -1,0 +1,43 @@
+﻿@using JobApp.Models
+@model User
+@{
+    Layout = null;
+}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/logreg.css" />
+</head>
+
+<body style="justify-content:center;align-items:center;">
+
+    @using (Html.BeginForm("Register", "User", FormMethod.Post))
+    {
+        <h1>Kayıt Ol</h1>
+        @Html.AntiForgeryToken()
+
+        <span>@ViewBag.errormessage</span>
+
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.Username)
+            @Html.TextBoxFor(m => m.Username, new { @class = "input-field", placeholder = "Kullanıcı adınızı girin" })
+        </div>
+
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password, new { @class = "input-field", placeholder = "Şifrenizi girin" })
+        </div>
+
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.Mail)
+            @Html.TextBoxFor(m => m.Mail, new { @class = "input-field", placeholder = "Mail adresinizi girin" })
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Kayıt Ol" class="submit-btn" />
+        </div>
+
+        <a href="@Url.Action("Login","User")">Hesabınız varsa giriş yapmak için tıklayın</a>
+    }
+
+</body>

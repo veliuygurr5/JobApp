@@ -1,0 +1,58 @@
+﻿@model JobApp.Models.User
+
+@{
+    ViewBag.Title = "Profilim";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/Main.css"  />
+</head>
+<h2>Profilim</h2>
+
+<div class="profile-container">
+    <table class="table">
+        <tr>
+            <th>Kullanıcı Adı</th>
+            <td>@Model.Username</td>
+        </tr>
+        <tr>
+            <th>Ad</th>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <th>Soyad</th>
+            <td>@Model.Surname</td>
+        </tr>
+        <tr>
+            <th>Telefon</th>
+            <td>@Model.Phone</td>
+        </tr>
+        <tr>
+            <th>Meslek</th>
+            <td>@ViewBag.meslek</td>
+        </tr>
+        <tr>
+            <th>Yetenekler</th>
+            <td>
+                @foreach (var skill in Model.SkillsList)
+                {
+                    <span>@skill.Name</span><br />
+                }
+            </td>
+        </tr>
+        <tr>
+            <th>Kayıt Tarihi</th>
+            <td>@Model.RegisterDate.ToString("dd/MM/yyyy")</td>
+        </tr>
+    </table>
+
+    <div class="profile-buttons">
+        <!-- Profil Düzenleme Butonu -->
+        <a href="@Url.Action("EditProfile", "User", new { id = Model.UserID })" class="btn btn-primary">Profilimi Düzenle</a>
+
+        <!-- Şifre Güncelleme Butonu -->
+        <a href="@Url.Action("ChangeMyPassword", "User", new { id = Model.UserID })" class="btn btn-warning">Şifremi Güncelle</a>
+
+
+        <a href="@Url.Action("ManageCV", "User", new { id = Model.UserID })" class="btn btn-warning">CV İşlemleri</a>
+    </div>
+</div>

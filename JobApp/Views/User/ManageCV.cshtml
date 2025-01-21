@@ -1,0 +1,25 @@
+﻿@using JobApp.Models
+@model List<CV>
+@{
+    Layout = null;
+}
+
+@for (int i = 0; i < Model.Count(); i++)
+{
+    <a href="@Model[i].Link" target="_blank">CV @i+1</a>
+    <a href="@Url.Action("DeleteCV","User", new {cvid = Model[i].CvID })">Sil</a>
+    <br />
+}
+
+@if (ViewBag.cvmsg == true)
+{
+    <div>5 adet cv'niz sistemde yüklü. Yükleme sınırını aştınız. Yeni cv yüklemek için öncekilerden birini silin</div>
+}
+else
+{
+    using (Html.BeginForm("UploadCv", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input type="file" name="myfile" id="myfile" value="Cv Yükle" />
+        <input type="submit" value="Cv Yükle" />
+    }
+}

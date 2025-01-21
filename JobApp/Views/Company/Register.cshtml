@@ -1,0 +1,58 @@
+﻿@using JobApp.Models
+@model Company
+
+
+
+
+<body style="justify-content:center;align-items:center;">
+
+    @using (Html.BeginForm("Register", "Company", FormMethod.Post))
+    {
+        <h1>Kayıt Ol</h1>
+        @Html.AntiForgeryToken()
+
+        <span>@ViewBag.errormessage</span>
+
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "input-field", placeholder = "Şirket adınızı giriniz" })
+        </div>
+
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.Cusername)
+            @Html.TextBoxFor(m => m.Cusername, new { @class = "input-field", placeholder = "Şirket kullanıcı adınızı giriniz" })
+        </div>
+
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.Cpassword)
+            @Html.PasswordFor(m => m.Cpassword, new { @class = "input-field", placeholder = "Şifrenizi girin" })
+        </div>
+
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.Description)
+            @Html.TextBoxFor(m => m.Description, new { @class = "input-field", placeholder = "Şirket açıklamanızı giriniz" })
+        </div>
+
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.Phone)
+            @Html.TextBoxFor(m => m.Phone, new { @class = "input-field", placeholder = "Şirket telefonunuzu giriniz" })
+        </div>
+
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.Map)
+            @Html.TextBoxFor(m => m.Map, new { @class = "input-field", placeholder = "Şirket konumunuzu giriniz" })
+        </div>
+
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.TaxNo)
+            @Html.TextBoxFor(m => m.TaxNo, new { @class = "input-field", placeholder = "Şirket vergi numaranızı giriniz" })
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Kayıt Ol" class="submit-btn" />
+        </div>
+
+        <a href="@Url.Action("Login","Company")">Hesabınız varsa giriş yapmak için tıklayın</a>
+    }
+
+</body>

@@ -1,0 +1,47 @@
+﻿@using JobApp.Models
+@model List<JobApp.Models.Posting>
+@{
+    Layout = null;
+}
+
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/logreg.css" />
+    <title>Available Jobs</title>
+</head>
+<body style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+
+    <h1>Available Jobs for You</h1>
+
+    <div class="allJobs" style="margin: 20px; padding: 10px;">
+        @if (Model != null && Model.Any())
+        {
+
+            <ul>
+                @foreach (var job in Model)
+                {
+                  
+                       <li style="border: 1px solid black; padding: 10px; margin-bottom: 10px;">
+                           <a href="@Url.Action("JobDetails","User",new {job_id = job.PostingID})">
+                               <h3>@job.Title</h3>
+                           </a>
+                               <p><strong>Company:</strong> @job.Company1.Name</p>
+                               <strong>Skills:</strong>
+                               @foreach (var skill in job.SkillsList)
+                               {
+                                   <p>@skill.Name</p>
+                               }
+                               <p><strong>Location:</strong> @job.Location</p>
+                       </li>
+                }
+            </ul>
+
+        }
+        else
+        {
+            <p>No job postings available at the moment.</p>
+        }
+    </div>
+
+</body>

@@ -1,0 +1,132 @@
+﻿/* :root ile renklerin tanımlanması */
+:root {
+    --color-background: #F5F5F5; /* Açık gri arka plan */
+    --color-primary: #48CFCB; /* Aqua yeşili */
+    --color-secondary: #229799; /* Koyu yeşil */
+    --color-text: #424242; /* Koyu gri metin rengi */
+    --color-error: #E74C3C; /* Kırmızı hata mesajları */
+    --color-white: #FFFFFF; /* Beyaz */
+    --color-border: #ddd; /* Hafif gri sınır rengi */
+}
+
+/* Genel ayarlar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--color-background); /* Açık gri arka plan */
+    color: var(--color-text); /* Koyu gri metin rengi */
+    display: flex;
+    justify-content: center; /* Ortalamak için flexbox */
+    align-items: center; /* Ortalamak için flexbox */
+    height: 100vh; /* Sayfa yüksekliğini tam kullan */
+    padding: 5%;
+}
+
+h1, h2 {
+    color: var(--color-secondary); /* Yeşil tonlarında başlık */
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 5%;
+}
+
+/* Form düzeni */
+form {
+    width: 40vw;
+    padding: 5%;
+    background-color: var(--color-white); /* Beyaz arka plan */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 3%;
+    min-width: 300px; /* Formun minimum genişliği */
+}
+
+/* Form grubu düzeni */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3%;
+}
+
+/* Input elemanları */
+.input-field {
+    width: 100%;
+    padding: 2%;
+    margin-top: 2%;
+    border: 1px solid var(--color-border); /* Hafif gri sınır rengi */
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Submit butonu */
+.submit-btn {
+    background-color: var(--color-primary); /* Aqua yeşili arka plan */
+    color: var(--color-white);
+    padding: 2% 4%;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .submit-btn:hover {
+        background-color: var(--color-secondary); /* Daha koyu yeşil hover efekti */
+    }
+
+.input-field:focus {
+    border-color: var(--color-primary); /* Aqua yeşili odaklanma rengi */
+}
+
+/* Validation mesajları */
+span.field-validation-error {
+    color: var(--color-error); /* Kırmızı hata mesajları */
+    font-size: 0.9rem;
+    margin-bottom:3%;
+}
+
+/* Responsive tasarım */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10%; /* Yeterli alan bırakmak için padding arttırıldı */
+        font-size: 1rem; /* Genel yazı boyutunu arttırdım */
+    }
+
+    form {
+        padding: 5%;
+        height: auto;
+        width:20vw;
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Başlık boyutunu arttırdım */
+        margin-bottom: 3%;
+    }
+
+    .submit-btn {
+        font-size: 1rem; /* Submit butonunun font boyutunu büyüttüm */
+        padding: 10px 20px; /* Butonun padding'ini artırdım */
+    }
+
+    .input-field {
+        font-size: 0.9rem; /* Input alanlarının font boyutunu arttırdım */
+        padding: 12px; /* Input alanlarının padding'ini arttırdım */
+    }
+
+    .form-group {
+        margin-bottom: 5%; /* Form elemanları arasında daha fazla boşluk */
+    }
+
+    span.field-validation-error {
+        font-size: 1rem; /* Hata mesajlarını büyüttüm */
+    }
+}
+

@@ -1,0 +1,67 @@
+﻿@using JobApp.Models
+@model User
+@{
+    Layout = null;
+}
+
+<head>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+</head>
+
+@using (Html.BeginForm("EditProfile", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.UserID)
+
+    @Html.ValidationMessageFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name)
+
+    @Html.ValidationMessageFor(m => m.Surname)
+    @Html.TextBoxFor(m => m.Surname)
+
+    @Html.ValidationMessageFor(m => m.Phone)
+    @Html.TextBoxFor(m => m.Phone)
+
+    @Html.ValidationMessageFor(m => m.Profession)
+    @Html.DropDownListFor(m => m.Profession, new SelectList(ViewBag.proffesions, "Value", "Text"), new { @id = "professions" })
+
+    <div id="skillsdiv">
+    
+    </div>
+
+    <input type="submit" value="Edit" />
+}
+
+<script type="text/javascript">
+    function get_skills()
+    {
+        $.ajax({
+            type: "get",
+            url: "/User/GetSkills",
+            data: { professionId: $('#professions').val() },
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                var result = "";
+                for (var i = 0; i < data.length; i++) {
+                    result = result + '<label for=' + data[i].Text + ' > ' + data[i].Text + ' </label>';
+                    result = result + '<input type=' + "checkbox" + ' value=' + data[i].Value + ' name=' + "checkbox" + i + ' />';
+                    result = result + '<br/>';
+                }
+                $('#skillsdiv').html(result);
+            },
+            error: function () {
+                console.log('hata');
+            }
+        });
+    }
+
+
+    $(document).ready(function () {
+        get_skills();
+        $('#professions').change(function () {
+            get_skills();
+        });
+    });
+</script>

@@ -1,0 +1,54 @@
+﻿@using JobApp.Models
+@model Posting
+@{
+    Layout = null;
+}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/logreg.css" />
+    <title>Available Models</title>
+</head>
+<body style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+
+    <h1>Available Models for You</h1>
+
+    <div class="allModels" style="margin: 20px; padding: 10px;">
+
+        <ul>
+            <li style="border: 1px solid black; padding: 10px; margin-bottom: 10px;">
+                <h3>@Model.Title</h3>
+                <p><strong>Company:</strong> @Model.Company1.Name</p>
+                <p><strong>Description:</strong> @Model.Description</p>
+                <strong>Suggested Skills:</strong>
+                @foreach (var skill in Model.SkillsList)
+                {
+                    <p>@skill.Name</p>
+                }
+                <p><strong>Location:</strong> @Model.Location</p>
+                <p><strong>Phone:</strong> @Model.Company1.Phone</p>
+
+                <div>
+                    @ViewBag.matched
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+    @if (ViewBag.is_user_applied == true)
+    {
+        <div>Bu işe zaten başvurdunuz</div>
+    }
+    else
+    {
+        using (Html.BeginForm("UploadCvAndApply", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="file" name="myfile" id="myfile" value="Cv Yükle" />
+            <input name="companyid" id="companyid" type="hidden" value="@Model.Company1.CompanyID" />
+            <input name="postingid" id="postingid" type="hidden" value="@Model.PostingID" />
+            <input type="submit" value="Başvur" />
+        }
+    }
+
+</body>

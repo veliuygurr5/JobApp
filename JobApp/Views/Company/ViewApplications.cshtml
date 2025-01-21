@@ -1,0 +1,33 @@
+﻿@model IEnumerable<JobApp.Models.Application>
+
+@{
+    ViewBag.Title = "Başvurular";
+}
+
+<h2>Başvurular</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Başvuru Sahibi</th>
+            <th>E-posta</th>
+            <th>İş İlanı Başlığı</th>
+            <th>Başvuru Tarihi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var application in Model)
+        {
+            <tr>
+                <td>@application.ApplicationID</td>
+                <td>@application.Company</td>
+                <td>@application.Posting.Title</td>
+                <td>@application.Posting.DatePosted.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <!-- Başvuru detayları, iş ilanını silme veya başvuruya geri dönüş gibi işlemler yapılabilir -->
+                    <a href="@Url.Action("ViewApplicationDetails", new { applicationId = application.ApplicationID })">Detaylar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
